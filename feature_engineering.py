@@ -69,10 +69,10 @@ print(df["Number of Genres"].max()) # max() - вивести максималь�
 
 #count_season_update(df["Last Updated"])
 
-a = 0
-s = 0
-summer = 0
-autumn = 0
+winter_amount = 0
+spring_amount = 0
+summer_amount = 0
+autumn_amount = 0
 
 def last_update(data):
     data = data.split(",")
@@ -80,29 +80,30 @@ def last_update(data):
     #return data[1]
     if "December" in data[0] or "January" in data[0] or "February" in data[0]:
         print(34)
-        global a
-        a += 1
+        global winter_amount
+        winter_amount += 1
     
     if "March" in data[0] or "April" in data[0] or "May" in data[0]:
         print(78)
-        global s 
-        s += 1
+        global spring_amount 
+        spring_amount += 1
     
     if "June" in data[0] or "July" in data[0] or "August" in data[0]:   # data[0] перша частина / елемент
         print(96757)
-        global summer
-        summer = summer + 1
+        global summer_amount
+        summer_amount = summer_amount + 1
     
     if "September" in data[0] or "October" in data[0] or "November" in data[0]:
-        print(79969)
-        global autumn
-        autumn = autumn + 1
+        print(79969)            
+        global autumn_amount        # global - мати змогу дістати зміну / значення зміної за допомогою global
+        autumn_amount = autumn_amount + 1
 
-    return f"Winter {a},Spring {s},Summer {summer},Autumn   {autumn}"
+    return f"Winter {winter_amount},Spring {spring_amount},Summer {summer_amount},Autumn {autumn_amount}"
 
        
 
 print(df["Last Updated"])
 df["Season"] = df["Last Updated"].apply(last_update)
-print(df["Season"])
+
 # Виведи на екран сезони та їх кількість у датасеті
+print(df["Season"])
